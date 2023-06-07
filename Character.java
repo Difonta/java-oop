@@ -1,13 +1,22 @@
 
 public class Character {
+    public enum CharAlignment {
+        NEUTRAL,
+        ALLY,
+        ENEMY
+
+    }
+
     private String name;
     private int health;
     private int maxHealth;
+    private CharAlignment alignment;
 
     public Character() {
         name = "default";
         health = 100;
         maxHealth = 100;
+        alignment = CharAlignment.NEUTRAL;
 
     }
 
@@ -15,11 +24,12 @@ public class Character {
         name = newName;
         health = newHealth;
         maxHealth = newHealth;
+        alignment = CharAlignment.NEUTRAL;
     }
 
     public void printInfo() {
         System.out.println("=== CURRENT STATS ===");
-        System.out.println("Name: " + name);
+        System.out.println("Name: " + name + " - " + alignment);
         System.out.println("Health: " + health + "/" + maxHealth);
         System.out.println("=====================");
     }
@@ -36,13 +46,14 @@ public class Character {
             health += amount;
         }
 
-
         return true;
     }
-
 
     public String getName() {
         return name;
     }
 
+    public CharAlignment getAlignment() {
+        return alignment;
+    }
 }
